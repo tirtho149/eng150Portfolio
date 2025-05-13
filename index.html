@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tirtho Roy | Portfolio</title>
+    <style>
+        :root {
+            --primary: #2d5d7b;
+            --secondary: #f3f3f3;
+            --accent: #e63946;
+            --text: #333;
+            --light-text: #777;
+            --background: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(45,93,123,0.9) 0%, rgba(45,93,123,0.7) 100%);
+            z-index: 1;
+        }
+        
+        nav {
+            background-color: rgba(45,93,123,0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            margin-right: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .profile-text {
+            flex: 1;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background-color: var(--secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .skill {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 3rem;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: var(--accent);
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -16px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--secondary);
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .profile {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-img {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            border-radius: 10px;
+            background-color: var(--primary);
+            width: 0;
+            transition: width 1s ease-in-out;
+        }
+        
+        /* Quote styling */
+        blockquote {
+            font-style: italic;
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+            margin: 2rem 0;
+            color: var(--light-text);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <h1>Tirtho Roy</h1>
+            <p>Computer Science Student | Iowa State University</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="profile">
+                <div class="profile-text" style="width: 100%;">
+                    <p>My name is Tirtho Roy, and I am currently a sophomore majoring in Computer Science at Iowa State University. Throughout my academic journey, I've been developing skills as a strategic thinker and communicator, able to traverse across genres and media.</p>
+                    <p>When I began ENGL 1500, I set several goals for myself: to be an effective communicator of personal stories, to render expert interviews into forms accessible to different media, and to present an academic argument clearly and precisely.</p>
+                    <p>I now see communication not as a task but as a responsibility. Whether I am honoring the memory of a loved one, informing the public about policy, or working with a partner in another time zone, I am committed to clarity, compassion, and purpose.</p>
+                    <p><strong>Portfolio Document:</strong> <a href="https://docs.google.com/document/d/1E9Rv6OLR6Yadx8PKaiap7EMBs6tbU-f-RV_wLwEsSbE/edit?usp=sharing" target="_blank">View my complete portfolio essay</a></p>
+                    <a href="#projects" class="btn">View My Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" style="background-color: var(--secondary);">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects">
+                <div class="project-card fade-in">
+                    <div class="project-content">
+                        <h3>My Grandfather: A Mystery Man</h3>
+                <div class="project-content">
+                        <h3>My Grandfather: A Mystery Man</h3>
+                        <p>A personal narrative exploring my relationship with my grandfather and the stories of the Bangladesh Liberation War that shaped our family history.</p>
+                        <p><strong>Skills:</strong> Storytelling, Emotional Writing, Historical Context</p>
+                        <a href="https://docs.google.com/document/d/1E9Rv6OLR6Yadx8PKaiap7EMBs6tbU-f-RV_wLwEsSbE/edit?usp=sharing" class="btn" target="_blank">Read More</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-content">
+                        <h3>Insights in Health Economics</h3>
+                <div class="project-content">
+                        <h3>Insights in Health Economics</h3>
+                        <p>A journalistic interview with Sayantan Chakraborty transformed into a polished webpage, featuring key ideas in health economics presented through headers, icons, infographics, and quotes.</p>
+                        <p><strong>Skills:</strong> Web Design, Content Synthesis, Digital Communication</p>
+                        <a href="https://docs.google.com/document/d/1E9Rv6OLR6Yadx8PKaiap7EMBs6tbU-f-RV_wLwEsSbE/edit?usp=sharing" class="btn" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-content">
+                        <h3>Reconstructing Healthcare</h3>
+                <div class="project-content">
+                        <h3>Reconstructing Healthcare</h3>
+                        <p>A formal research reflection co-authored with Chakraborty, combining real-life policy analysis with personal stories to make health economics accessible to everyone.</p>
+                        <p><strong>Skills:</strong> Research, Collaboration, Interdisciplinary Thinking</p>
+                        <a href="https://docs.google.com/document/d/1E9Rv6OLR6Yadx8PKaiap7EMBs6tbU-f-RV_wLwEsSbE/edit?usp=sharing" class="btn" target="_blank">Read Paper</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Strengths</h2>
+            <p>Throughout my academic journey, I've developed various communication and technical skills that enable me to effectively convey ideas across different formats and platforms.</p>
+            
+            <h3>Communication Skills</h3>
+            <div class="progress-container">
+                <div class="progress-bar" data-width="90"></div>
+            </div>
+            <p>Ability to reach audiences on a narrative and emotional level, transporting readers into memories and experiences.</p>
+            
+            <h3>Technical Writing</h3>
+            <div class="progress-container">
+                <div class="progress-bar" data-width="85"></div>
+            </div>
+            <p>Explaining complex topics like value-based care and cost-effectiveness to general audiences through clear language and visual aids.</p>
+            
+            <h3>Digital Design</h3>
+            <div class="progress-container">
+                <div class="progress-bar" data-width="75"></div>
+            </div>
+            <p>Creating multimodal content that enhances rather than overpowers the message, with a focus on minimalist and content-based layouts.</p>
+            
+            <h3>Research & Analysis</h3>
+            <div class="progress-container">
+                <div class="progress-bar" data-width="80"></div>
+            </div>
+            <p>Collaborating on interdisciplinary research projects and synthesizing information from various sources into cohesive narratives.</p>
+            
+            <div class="skills">
+                <span class="skill">Creative Writing</span>
+                <span class="skill">Web Design</span>
+                <span class="skill">Public Speaking</span>
+                <span class="skill">Data Visualization</span>
+                <span class="skill">Policy Analysis</span>
+                <span class="skill">Collaborative Research</span>
+                <span class="skill">Multimodal Communication</span>
+                <span class="skill">Storytelling</span>
+            </div>
+        </div>
+    </section>
+    
+    <section id="journey" style="background-color: var(--secondary);">
+        <div class="container">
+            <h2>My Learning Journey</h2>
+            <blockquote>
+                "In hindsight, ENGL 1500 not only improved my writing but revolutionized how I think about communication. Every assignment whether personal, or professional was a step toward understanding that writing is both process and product."
+            </blockquote>
+            
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Early Semester</h3>
+                        <p>Focus primarily on structure and grammar in writing. Beginning to understand the importance of emotional resonance in storytelling.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Personal Narrative Project</h3>
+                        <p>Wrote "My Grandfather: A Mystery Man," learning to balance vulnerability with clarity. Revised multiple times to improve storytelling, tone, and transitions.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Interview Project</h3>
+                        <p>Conducted and transformed a Zoom interview with Sayantan Chakraborty into a digital article, focusing on layout and design for audience engagement.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Research Collaboration</h3>
+                        <p>Co-authored "Reconstructing Healthcare," combining policy analysis with personal stories to make health economics accessible.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Ongoing Development</h3>
+                        <p>Working on improving oral presentation skills and design consistency, scripting key points and rehearsing to boost confidence.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Future Goals</h3>
+                        <p>Planning to focus on public-facing digital communication, health data visualizations, and research in technical domains. Interested in exploring interactive tools like Tableau, Canva, and AI storytelling platforms.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>I'm interested in research opportunities, collaborations, and discussions about communication, technology, and health policy. Feel free to reach out!</p>
+            
+            <form id="contact-form" class="fade-in">
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="name" style="display: block; margin-bottom: 0.5rem;">Name</label>
+                    <input type="text" id="name" name="name" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;">
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="email" style="display: block; margin-bottom: 0.5rem;">Email</label>
+                    <input type="email" id="email" name="email" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;">
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="message" style="display: block; margin-bottom: 0.5rem;">Message</label>
+                    <textarea id="message" name="message" rows="5" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <h3>Tirtho Roy</h3>
+            <p>Computer Science Student at Iowa State University</p>
+            <div class="social-links">
+                <a href="https://docs.google.com/document/d/1E9Rv6OLR6Yadx8PKaiap7EMBs6tbU-f-RV_wLwEsSbE/edit?usp=sharing" target="_blank">Portfolio Document</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">Email</a>
+            </div>
+            <p>&copy; 2025 Tirtho Roy. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Animate progress bars on scroll
+        const progressBars = document.querySelectorAll('.progress-bar');
+        
+        function animateProgressBars() {
+            progressBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animate elements on scroll
+        function fadeInOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Handle form submission
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+        
+        // Run animations on load and scroll
+        window.addEventListener('load', () => {
+            setTimeout(animateProgressBars, 500);
+            fadeInOnScroll();
+        });
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+    </script>
+</body>
+</html>
